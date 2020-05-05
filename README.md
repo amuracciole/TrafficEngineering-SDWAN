@@ -2,7 +2,7 @@
 
 Este repositorio forma parte del trabajo de TFG de Andrés Muracciole para el Master Universitario en Ingeniería en Redes y Servicios Telemáticos de la Universidad Politécnica de Madrid.
 
-** NOTA: Se encuentra en constantes modificaciones debido a mejoras en las que se está trabajando **
+**NOTA: Se encuentra en constantes modificaciones debido a mejoras en las que se está trabajando**
 
 AUTOR: Andrés Muracciole
 
@@ -35,7 +35,6 @@ O que es lo mismo:
 
 ```
 ryu-manager simple_monitor_13_modify.py ryu.app.gui_topology.gui_topology
-
 ```
 
 ## 3) Configurar paths:
@@ -54,4 +53,19 @@ En caso de querer elegir el camino CONM_A - CONM_B - CONM_D - CONM_E, se puede h
 sh long_path.sh
 ```
 
-*** Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real ***
+## 4) Eliminar el escenario:
+
+Una vez que se deje te trabajr con el escenario, es necesario destruirlo.
+
+```
+sh Script_TFM_OFF.sh
+```
+
+O que es lo mismo:
+
+```
+sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --destroy
+
+``` 
+
+***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
