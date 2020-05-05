@@ -12,6 +12,8 @@ El controlador a utilizar será Ryu y se hará un fuerte uso de su [API](https:/
 
 En escenario tiene la particularidad de tener una topologia "tipo pez" de forma que se crea un loop se conmutadores como se puede apreciar en la [figura](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Topologia.png). Aquí radica la dificultad del escenario ya que se debe aplicar una solución óptima para que no queden paquetes en el loop haciendo que se congestione la red.
 
+![tablas](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Tablas.png)
+
 ## 1) Cargar el escenario:
 
 ```
@@ -68,4 +70,4 @@ sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --destroy
 
 ``` 
 
-***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
+***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/simple_monitor_13_modify.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
