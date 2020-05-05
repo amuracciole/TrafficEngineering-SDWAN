@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+~~~~~~~~~~~~~~~~~~~~
+VNX SD-WAN SCENARIO - LBASS TFM
+~~~~~~~~~~~~~~~~~~~~
+
+Name:        SD-WAN_TFM
+
+Description:  
+!!!!!!!!!!!ESCENARIO DE TFM: SD-WAN!!!!!!!!!!!!!!!
+
+MASTER UIVERSITARIO EN INGENIERIA DE REDES Y SERVICIOS TELEMATICOS
+Universidad Politecnica de Madrid
+SPAIN
+
+-->
+
+<vnx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="/usr/share/xml/vnx/vnx-2.00.xsd">
+  <global>
+    <version>2.0</version>
+    <scenario_name>SD-WAN_TFM_L.BASCOPE_A.MURACCIOLE</scenario_name>
+    <automac offset="5"/>
+    <vm_mgmt type="none" />     
+    <vm_defaults>
+	    <console id="0" display="no"/>
+	    <console id="1" display="yes"/>
+    </vm_defaults>
+  </global>
+  
+  <net name="SD-WAN_EDGE1" mode="openvswitch" hwaddr="00:00:00:00:07:00" controller="tcp:127.0.0.1:6633" of_version="OpenFlow13" fail_mode="secure" />
+  <net name="SD-WAN_EDGE2" mode="openvswitch" hwaddr="00:00:00:00:08:00" controller="tcp:127.0.0.1:6633" of_version="OpenFlow13" fail_mode="secure" /> 
+
+  <!-- NODES -->
+  <vm name="h1" type="lxc" arch="x86_64">
+    <filesystem type="cow">/usr/share/vnx/filesystems/rootfs_lxc_ubuntu64</filesystem>
+    <mem>512M</mem>
+    <if id="1" net="SD-WAN_EDGE1">
+      <mac>00:00:00:00:01:01</mac>
+      <ipv4>10.1.1.1/24</ipv4>
+    </if>
+    <route type="ipv4" gw="10.1.1.10">default</route>
+  </vm>
+  
+  <vm name="h2" type="lxc" arch="x86_64">
+    <filesystem type="cow">/usr/share/vnx/filesystems/rootfs_lxc_ubuntu64</filesystem>
+    <if id="1" net="SD-WAN_EDGE2" >
+      <mac>00:00:00:00:03:01</mac>
+      <ipv4>10.1.2.3/24</ipv4>
+    </if>
+    <route type="ipv4" gw="10.1.2.20">default</route>
+  </vm>
+    
+  <vm name="MPLS_NETWORK" type="lxc" arch="x86_64">
+    <filesystem type="cow">/usr/share/vnx/filesystems/rootfs_lxc_ubuntu64</filesystem>
+    <if id="1" net="SD-WAN_EDGE1" >
+      <mac>00:00:00:00:05:01</mac>
+      <ipv4>10.1.1.10/24</ipv4>
+    </if>
+    <if id="2" net="SD-WAN_EDGE2" >
+      <mac>00:00:00:00:05:02</mac>
+      <ipv4>10.1.2.20/24</ipv4>
+    </if>
+    <exec seq="on_boot" type="verbatim">
+        sudo sysctl net.ipv4.ip_forward=1
+    </exec>  
+  </vm>
+  
+ <vm name="INTERNET" type="lxc" arch="x86_64">
+    <filesystem type="cow">/usr/share/vnx/filesystems/rootfs_lxc_ubuntu64</filesystem>
+    <if id="1" net="SD-WAN_EDGE1" >
+      <mac>00:00:00:00:06:01</mac>
+      <ipv4>10.1.1.30/24</ipv4>
+    </if>
+    <if id="2" net="SD-WAN_EDGE2" >
+      <mac>00:00:00:00:06:02</mac>
+      <ipv4>10.1.2.40/24</ipv4>
+    </if>
+    <exec seq="on_boot" type="verbatim">
+        sudo sysctl net.ipv4.ip_forward=1
+    </exec>
+  </vm>
+    
+</vnx>
