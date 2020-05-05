@@ -1,63 +1,57 @@
-# Implementación y estudio de una red LoRaWAN
+# Solución de Ingeniería de Tráfico - TFM 2020
 
-Trabajo final de grado para obtención de título en Ingeniero el Telecomunicaciones - Universidad Católica del Uruguay Dámaso Antonio Larrañaga
+Este repositorio forma parte del trabajo de TFG de Andrés Muracciole para el Master Universitario en Ingeniería en Redes y Servicios Telemáticos de la Universidad Politécnica de Madrid.
 
-AUTORES: Juan Collazo, Mauro Gonzalez y Andrés Muracciole
+** NOTA: Se encuentra en constantes modificaciones debido a mejoras en las que se está trabajando **
 
-El [trabajo](https://github.com/amuracciole/LoRaWAN_Network/blob/master/Tesis_Collazo_Gonzalez_Muracciole.pdf) consiste en el estudio del protocolo de red LoRaWAN para luego implementar una red a partir de un gateway RAK 831 y módulos de comunicacion propios fabricados con Arduino Pro Mini y módulos LoRa RFM95W. El código se encuentra [aquí](https://github.com/amuracciole/LoRaWAN_Network/blob/master/LoRaWAN_Code.ino).
-El servidor de red y aplicaciones utilizado en dicho trabajo fue TTN.
+AUTOR: Andrés Muracciole
 
-![LoRaWAN](https://github.com/amuracciole/LoRaWAN_Network/blob/master/LoRaWAN.jpg)
+Este trabajo consiste en el estudio e implementación de una solución de ingeniería de tráfico SDWAN para tratamiento de datos en una red WAN en tiempo real. El objetivo es sensar los caminos hasta el destino y determinar el camino mas óptimo en función del ancho de banda disponible, delay y paquetes perdidos.
 
-## NODO
+El controlador a utilizar será Ryu y se hará un fuerte uso de su [API](https://ryu.readthedocs.io/en/latest/app/ofctl_rest.html#).
 
-Este se creó desde cero, realizando el diseño de la protoboard para posteriormente enviar a fabicarlas.
-En cuanto a la configuración, esta se hizo de forma escalable de forma que el usuario pueda decidir los modos DEBUG y SLEEP.
-Por otro lado, cuenta con diversos módulos para determinar el tipo de sensor o dato a enviar.
+En escenario tiene la particularidad de tener una topologia "tipo pez" de forma que se crea un loop se conmutadores como se puede apreciar en la [figura](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Topologia.png). Aquí radica la dificultad del escenario ya que se debe aplicar una solución óptima para que no queden paquetes en el loop haciendo que se congestione la red.
 
-### Número Aleatorio
+## 1) Cargar el escenario:
 
-Envía un número aleatorio entre 0 y 255
+```
+sh Script_TFM_ON.sh
+```
 
-### Conteo
+O que es lo mismo:
 
-Envía de forma periódica un número. Este comienza en 1 y va incrementando.
+```
+sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --create
 
-### Palabra Fija
+```
 
-Para mostrar que no solo se puede enviar números, esta función es capaz de enviar una palabra o frase corta.
+## 2) Levantar el controlador:
 
-### Humedad y Temperatura
+```
+sh Script_TFM_controlador.sh
+```
 
-Pensado para utilizarse con el sensor DHT11. Esta función envia la presión y temperatura ambiental.
+O que es lo mismo:
 
-### Luz
+```
+ryu-manager simple_monitor_13_modify.py ryu.app.gui_topology.gui_topology
 
-Pensado para utilizarse con el sensor BH1750. Esta función envia el nivel de luxes en el ambiente. Va entre 0 y 65535
+```
 
-## LIBRERIAS
+## 3) Configurar paths:
 
-Se adjuntan las librerías de Arduino utilizadas o de interés:
+Como se puede apreciar, la topología presenta un loop, una posible forma para evitar esto es enviar el tráfico por el camino mas corto: CONM_A - CONM_C - CONM_E.
+Para esto se puede hacer mediante el script [short_path](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/short_path.sh). Este envía el tráfico IPv4 y ARP por este camino, bloqueando expresamente IPv6.
 
-[AdafruitMaster](https://github.com/amuracciole/LoRaWAN_Network/blob/master/Adafruit_Sensor-master-20200422T151704Z-001.zip)
+```
+sh short_path.sh
+```
 
-[BH1750FVI](https://github.com/amuracciole/LoRaWAN_Network/blob/master/BH1750FVI-master-20200421T232901Z-001.zip)
+En caso de querer elegir el camino CONM_A - CONM_B - CONM_D - CONM_E, se puede hacer con el script [long_path](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/long_path.sh). Este envía el tráfico IPv4 y ARP por este camino, bloqueando expresamente IPv6.
 
-[I2C](https://github.com/amuracciole/LoRaWAN_Network/blob/master/I2C-Sensor-Lib_iLib-20200421T232914Z-001.zip)
 
-[LowPowerMaster](https://github.com/amuracciole/LoRaWAN_Network/blob/master/Low-Power-master-20200422T151701Z-001.zip)
+```
+sh long_path.sh
+```
 
-[LMICMaster](https://github.com/amuracciole/LoRaWAN_Network/blob/master/arduino-lmic-master-20200421T232840Z-001.zip)
-
-## PCB
-
-![Nodo](https://github.com/amuracciole/LoRaWAN_Network/blob/master/Nodo.png)
-
-Los archivos PCB_Sensor y PCB_Nodo son los diseños de las placas finales realizadas para el trabajo.
-
-## DOCUMENTACIÓN
-
-![RAK831](https://github.com/amuracciole/LoRaWAN_Network/blob/master/RAK831.png)
-
-Se agrega una memoria final del trabajo con los estudios y mediociones realizadas así como también un archivo que indica los pasos a seguir para realizar la configuración del gatewar RAK831
-
+*** Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real ***
