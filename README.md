@@ -1,6 +1,6 @@
 # Solución de Ingeniería de Tráfico - TFM 2020
 
-Este repositorio forma parte del trabajo de TFG de Andrés Muracciole para el Master Universitario en Ingeniería en Redes y Servicios Telemáticos de la Universidad Politécnica de Madrid.
+Este repositorio forma parte del trabajo de TFM de Andrés Muracciole para el Master Universitario en Ingeniería en Redes y Servicios Telemáticos de la Universidad Politécnica de Madrid.
 
 **NOTA: Se encuentra en constantes modificaciones debido a mejoras en las que se está trabajando**
 
