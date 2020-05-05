@@ -71,3 +71,9 @@ sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --destroy
 ``` 
 
 ***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/simple_monitor_13_modify.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
+
+*Fuentes de referencias:*
+
+- [Repositorio Wildan Maulana Syahidillah](https://github.com/wildan2711)
+
+- [Repositorio muzixing](https://github.com/muzixing/ryu)
