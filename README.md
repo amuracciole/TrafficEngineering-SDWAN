@@ -27,6 +27,8 @@ sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --create
 
 ```
 
+![topología](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Topologia.png)
+
 ## 2) Levantar el controlador:
 
 ```
@@ -77,3 +79,5 @@ sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --destroy
 - [Repositorio Wildan Maulana Syahidillah](https://github.com/wildan2711)
 
 - [Repositorio muzixing](https://github.com/muzixing/ryu)
+
+- ![Eth_Type](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Eth_type.png)
