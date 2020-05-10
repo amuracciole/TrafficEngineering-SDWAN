@@ -10,74 +10,41 @@ Este trabajo consiste en el estudio e implementación de una solución de ingeni
 
 El controlador a utilizar será Ryu y se hará un fuerte uso de su [API](https://ryu.readthedocs.io/en/latest/app/ofctl_rest.html#).
 
-En escenario tiene la particularidad de tener una topologia "tipo pez" de forma que se crea un loop se conmutadores como se puede apreciar en la [figura](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Topologia.png). Aquí radica la dificultad del escenario ya que se debe aplicar una solución óptima para que no queden paquetes en el loop haciendo que se congestione la red.
+En escenario tiene la particularidad de tener una topologia "tipo pez" de forma que se crea un loop se conmutadores como se puede apreciar en la [figura](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Imagenes/Topologia.png). Aquí radica la dificultad del escenario ya que se debe aplicar una solución óptima para que no queden paquetes en el loop haciendo que se congestione la red.
 
-![tablas](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Tablas.png)
+![tablas](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Imagenes/Tablas.png)
 
-## 1) Cargar el escenario:
-
-```
-sh Script_TFM_ON.sh
-```
-
-O que es lo mismo:
+## Cargar el escenario:
 
 ```
-sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --create
-
+sh Main_Menu_UBUNTU.sh
 ```
+Esto levanta una interfaz de menu en la terminal desde onde se pueden realizar las siguientes cosas:
 
-![topología](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Topologia.png)
+1 - Crear el escenario
 
-## 2) Levantar el controlador:
+2 - Destruir el escenario
 
-```
-sh Script_TFM_controlador.sh
-```
+3 - Levantar el controlador
 
-O que es lo mismo:
+4 - Realizar configuraciones
 
-```
-ryu-manager simple_monitor_13_modify.py ryu.app.gui_topology.gui_topology
-```
+Al seleccionar la tercer opción, por defecto se envía todo el tráfico por el camino mas corto.
 
-## 3) Configurar paths:
+Desde el ***punto 4*** es posible seleccionar:
 
-Como se puede apreciar, la topología presenta un loop, una posible forma para evitar esto es enviar el tráfico por el camino mas corto: CONM_A - CONM_C - CONM_E.
-Para esto se puede hacer mediante el script [short_path](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/short_path.sh). Este envía el tráfico IPv4 y ARP por este camino, bloqueando expresamente IPv6.
+1. El camino que toma TODO el tráfico IPv4
 
-```
-sh short_path.sh
-```
+2. El camino que toma TODO el tráfico ARP
 
-En caso de querer elegir el camino CONM_A - CONM_B - CONM_D - CONM_E, se puede hacer con el script [long_path](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/long_path.sh). Este envía el tráfico IPv4 y ARP por este camino, bloqueando expresamente IPv6.
+3. El camino que toma DETERMINADO tráfico IPv4 (En función de la srs_IP y dst_IP)
+***Este punto todavía no se encuentra operativo***
 
 
-```
-sh long_path.sh
-```
-
-## 4) Eliminar el escenario:
-
-Una vez que se deje te trabajr con el escenario, es necesario destruirlo.
-
-```
-sh Script_TFM_OFF.sh
-```
-
-O que es lo mismo:
-
-```
-sudo vnx -f /usr/share/vnx/tfm/Lab_TFM.xml -v --destroy
-
-``` 
-
-***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/simple_monitor_13_modify.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
+***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/simple_monitor_13_modify2.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
 
 *Fuentes de referencias:*
 
 - [Repositorio Wildan Maulana Syahidillah](https://github.com/wildan2711)
 
 - [Repositorio muzixing](https://github.com/muzixing/ryu)
-
-- ![Eth_Type](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Eth_type.png)
