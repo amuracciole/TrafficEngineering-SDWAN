@@ -4,8 +4,6 @@ curl -X POST -d '{
     "cookie": 0,
     "cookie_mask": 1,
     "table_id": 0,
-    "idle_timeout": 15,
-    "hard_timeout": 60,
     "priority": 1,
     "flags": 1,
     "match":{
@@ -25,8 +23,6 @@ curl -X POST -d '{
     "cookie": 0,
     "cookie_mask": 1,
     "table_id": 0,
-    "idle_timeout": 15,
-    "hard_timeout": 60,
     "priority": 1,
     "flags": 1,
     "match":{
@@ -46,8 +42,6 @@ curl -X POST -d '{
     "cookie": 0,
     "cookie_mask": 1,
     "table_id": 0,
-    "idle_timeout": 15,
-    "hard_timeout": 60,
     "priority": 1,
     "flags": 1,
     "match":{
@@ -67,8 +61,6 @@ curl -X POST -d '{
     "cookie": 0,
     "cookie_mask": 1,
     "table_id": 0,
-    "idle_timeout": 15,
-    "hard_timeout": 60,
     "priority": 1,
     "flags": 1,
     "match":{
@@ -88,8 +80,6 @@ curl -X POST -d '{
     "cookie": 0,
     "cookie_mask": 1,
     "table_id": 0,
-    "idle_timeout": 15,
-    "hard_timeout": 60,
     "priority": 1,
     "flags": 1,
     "match":{
@@ -109,8 +99,6 @@ curl -X POST -d '{
     "cookie": 0,
     "cookie_mask": 1,
     "table_id": 0,
-    "idle_timeout": 15,
-    "hard_timeout": 60,
     "priority": 1,
     "flags": 1,
     "match":{
