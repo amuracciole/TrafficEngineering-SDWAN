@@ -22,15 +22,15 @@ sh Main_Menu_UBUNTU.sh
 ![main_menu](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Imagenes/Main_Menu.png)
 Esto levanta una interfaz de menu en la terminal desde onde se pueden realizar las siguientes cosas:
 
-1. Crear el escenario
+1. Crear escenario
 
-2. Destruir el escenario
+2. Destruir escenario
 
 3. Imprimir diagrama de red
 
-4. Levantar el controlador
+4. Ejecutar controlador
 
-5. Realizar configuraciones
+5. Realizar configuración
 
 Al seleccionar la tercer opción, por defecto se envía todo el tráfico por el camino mas corto.
 
