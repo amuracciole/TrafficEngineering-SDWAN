@@ -33,14 +33,15 @@ _Menu() {
 2) Destruir escenario   
 3) Imprimir diagrama de red     
 4) Ejecutar controlador      
-5) Realizar configuración    
-6) Salir"
+5) Realizar configuración
+6) Visualizar configuraciones
+7) Salir"
 }
 
 _ConfigureMenu() {
     echo "
 -----------------------------
-        CONFIGURACIóN                  
+        CONFIGURACIÓN                    
 -----------------------------
 1) Configuración IP           
 2) Configuración ARP     
@@ -51,7 +52,7 @@ _ConfigureMenu() {
 _ConfigureIP() {
     echo "
 -----------------------------
-        CONFIGURACIóN                  
+        CONFIGURACIÓN                    
 -----------------------------
 1) Todo tráfico IP           
 2) Determinado tráfico IP   
@@ -62,7 +63,7 @@ _ConfigureIP() {
 _ConfigurePath() {
     echo "
 -----------------------------
-        CONFIGURACIóN                  
+        CONFIGURACIÓN                    
 -----------------------------
 1) Camino largo           
 2) Camino corto
@@ -73,7 +74,7 @@ _ConfigurePath() {
 _ConfigureSrcIP() {
     echo "
 -----------------------------
-        CONFIGURACIóN                  
+        CONFIGURACIÓN                  
 -----------------------------
 Ingrese IP de Origen:"
 }
@@ -81,6 +82,36 @@ Ingrese IP de Origen:"
 _ConfigureDstIP() {
     echo "
 Ingrese IP de Destino:"
+}
+
+_ShowConfigurations() {
+    echo "
+-----------------------------
+        VISUALIZACIÓN                  
+-----------------------------
+1) Conmutadores (vsctl show)          
+2) Tablas de flujo (flows tables)
+3) Grupos (groups tables)
+4) Puertos (ports tables)
+5) Diagrama de red
+6) Version OpenVSwitch
+
+**Ingrese otra tecla para volver al menu principal**"
+}
+
+_SelectConm() {
+    echo "
+-----------------------------
+        VISUALIZACIÓN                  
+-----------------------------
+Seleccione el conmutador:
+1) CONM_A
+2) CONM_B
+3) CONM_C
+4) CONM_D
+5) CONM_E
+
+**Ingrese otra tecla para volver al menu principal**"
 }
 
 _Config() {
@@ -136,13 +167,13 @@ _Config() {
             #CAMINO IP LARGO
             if [ $opt_conf_path -eq "1" ]
             then
-                echo "FUNCION Some_IP_long_path.sh"
+                sh Some_IP_long_path.sh $src_IP $dst_IP
                 sleep 1
             
             #CAMINO IP CORTO
             elif [ $opt_conf_path -eq "2" ]
             then
-                echo "FUNCION Some_IP_short_path.sh"
+                sh Some_IP_short_path.sh $src_IP $dst_IP
                 sleep 1
             fi
         fi
@@ -159,17 +190,116 @@ _Config() {
         if [ $opt_conf_path -eq "1" ]
         then
 	    sh All_ARP_long_path.sh
-            sleep 1
         
         #CAMINO ARP CORTO
         elif [ $opt_conf_path -eq "2" ]
         then
             sh All_ARP_short_path.sh
-            sleep 1
         fi
     fi
 }
 
+_Shows() {
+    clear
+    _Banner
+    _InitMessage
+    _ShowConfigurations
+    read opt_show
+    #VISUALIZAR CONMUTADORES
+    if [ $opt_show -eq "1" ]
+    then
+        gnome-terminal -- bash -c "sudo ovs-vsctl show; exec bash"
+
+    #VISUALIZAR TABLAS DE FLUJO
+    elif [ $opt_show -eq "2" ]
+    then
+        clear
+        _Banner
+        _InitMessage
+        _SelectConm
+        read opt_select_conm
+        if [ $opt_select_conm -eq "1" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_flows.sh CONM_A; exec bash"
+        elif [ $opt_select_conm -eq "2" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_flows.sh CONM_B; exec bash"
+        elif [ $opt_select_conm -eq "3" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_flows.sh CONM_C; exec bash"
+        elif [ $opt_select_conm -eq "4" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_flows.sh CONM_D; exec bash"
+        elif [ $opt_select_conm -eq "5" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_flows.sh CONM_E; exec bash"
+        fi
+    
+    #VISUALIZAR TABLAS DE GRUPOS
+    elif [ $opt_show -eq "3" ]
+    then
+        clear
+        _Banner
+        _InitMessage
+        _SelectConm
+        read opt_select_conm
+        if [ $opt_select_conm -eq "1" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_groups.sh CONM_A; exec bash"
+        elif [ $opt_select_conm -eq "2" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_groups.sh CONM_B; exec bash"
+        elif [ $opt_select_conm -eq "3" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_groups.sh CONM_C; exec bash"
+        elif [ $opt_select_conm -eq "4" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_groups.sh CONM_D; exec bash"
+        elif [ $opt_select_conm -eq "5" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_groups.sh CONM_E; exec bash"
+        fi
+
+    #VISUALIZAR TABLAS DE PUERTOS
+    elif [ $opt_show -eq "4" ]
+    then
+        clear
+        _Banner
+        _InitMessage
+        _SelectConm
+        read opt_select_conm
+        if [ $opt_select_conm -eq "1" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_ports.sh CONM_A; exec bash"
+        elif [ $opt_select_conm -eq "2" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_ports.sh CONM_B; exec bash"
+        elif [ $opt_select_conm -eq "3" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_ports.sh CONM_C; exec bash"
+        elif [ $opt_select_conm -eq "4" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_ports.sh CONM_D; exec bash"
+        elif [ $opt_select_conm -eq "5" ]
+        then
+            gnome-terminal -- bash -c "sh Script_dump_ports.sh CONM_E; exec bash"
+        fi
+    
+    #VISUALIZAR DIAGRAMA DE RED
+    elif [ $opt_show -eq "5" ]
+    then
+        cd /home/upm/Desktop
+        sh Script_Diagrama.sh
+        clear
+
+    #VISUALIZAR VERSION DE OPENVSWITCH
+    elif [ $opt_show -eq "6" ]
+    then
+        echo "FALTA!"
+    fi
+}
+
+##------------------------------------------- LOOP -------------------------------------------##
 while true ; do
     _Banner
     _InitMessage
@@ -214,15 +344,25 @@ while true ; do
         _Config
         clear
 
-    #SALIR
+    #VISUALIZAR CONFIGURACIONES
     elif [ $opt -eq "6" ]
+    then
+        _Shows
+        read show
+        clear
+
+    #SALIR
+    elif [ $opt -eq "7" ]
     then
         sh Script_OFF.sh
         for xid in $(wmctrl -l | grep -e "Terminal" | awk '{print $1}'); do wmctrl -i -c $xid ; done
         for xid in $(wmctrl -l | grep -e "Escenario_TFM_Andres_Muracciole.svg" | awk '{print $1}'); do wmctrl -i -c $xid ; done
+        ##FALTA CERRAR TODAS LAS TERMINALES!!
         clear
         exit
     else
         echo "Opcion incorrecta. Intente nuevamente"
+        sleep 3
+        clear
     fi
 done
