@@ -19,6 +19,7 @@ En escenario tiene la particularidad de tener una topologia "tipo pez" de forma 
 ```
 sh Main_Menu_UBUNTU.sh
 ```
+![main_menu](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Imagenes/Main_Menu.png)
 Esto levanta una interfaz de menu en la terminal desde onde se pueden realizar las siguientes cosas:
 
 1 - Crear el escenario
