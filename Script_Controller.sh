@@ -1,5 +1,6 @@
 #!/bin/bash
-echo "\n---> Levantar controlador y traffic monitor <---"
+
+echo "\n---> Levantar controlador <---"
 sleep 1
 cd /home/upm/ryu/ryu/app
 ##FUNCIONA - Multipath (sin meidores de BW, PL y DL - Con rest## 

@@ -14,7 +14,7 @@ En escenario tiene la particularidad de tener una topologia "tipo pez" de forma 
 
 ![tablas](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Imagenes/Tablas.png)
 
-## Cargar el escenario:
+## Main Menu:
 
 ```
 sh Main_Menu_UBUNTU.sh
@@ -22,17 +22,19 @@ sh Main_Menu_UBUNTU.sh
 ![main_menu](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/Imagenes/Main_Menu.png)
 Esto levanta una interfaz de menu en la terminal desde onde se pueden realizar las siguientes cosas:
 
-1 - Crear el escenario
+1. Crear el escenario
 
-2 - Destruir el escenario
+2. Destruir el escenario
 
-3 - Levantar el controlador
+3. Imprimir diagrama de red
 
-4 - Realizar configuraciones
+4. Levantar el controlador
+
+5. Realizar configuraciones
 
 Al seleccionar la tercer opción, por defecto se envía todo el tráfico por el camino mas corto.
 
-Desde el ***punto 4*** es posible seleccionar:
+Desde el ***punto 5*** es posible seleccionar:
 
 1. El camino que toma TODO el tráfico IPv4
 
@@ -44,7 +46,7 @@ Desde el ***punto 4*** es posible seleccionar:
 
 ***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW, delay y packet lost. Estos parámetros se obtienen del controlador [modificado](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/simple_monitor_13_modify2.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
 
-*Fuentes de referencias:*
+##Fuentes de referencias:
 
 - [Repositorio Wildan Maulana Syahidillah](https://github.com/wildan2711)
 

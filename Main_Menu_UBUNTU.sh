@@ -30,10 +30,11 @@ _Menu() {
             MENU                  
 -----------------------------
 1) Crear escenario
-2) Destruir escenario        
-3) Ejecutar controlador      
-4) Realizar configuración    
-5) Salir"
+2) Destruir escenario   
+3) Imprimir diagrama de red     
+4) Ejecutar controlador      
+5) Realizar configuración    
+6) Salir"
 }
 
 _ConfigureMenu() {
@@ -180,7 +181,6 @@ while true ; do
     then
         cd /home/upm/Desktop
         sh Script_ON.sh
-        #echo "FUNCION CREAR ESCENARIO"
         clear
 
     #DESTRUIR ESCENARIO
@@ -188,11 +188,18 @@ while true ; do
     then
         cd /home/upm/Desktop
         sh Script_OFF.sh
-        #echo "FUNCION DESTRUIR ESCENARIO"
+        for xid in $(wmctrl -l | grep -e "Escenario_TFM_Andres_Muracciole.svg" | awk '{print $1}'); do wmctrl -i -c $xid ; done
         clear
-
-    #EJECUTAR CONTROLADOR
+    
+    #IMPRIMIR DIAGRAMA DE RED
     elif [ $opt -eq "3" ]
+    then
+        cd /home/upm/Desktop
+        sh Script_Diagrama.sh
+        clear
+    
+    #EJECUTAR CONTROLADOR
+    elif [ $opt -eq "4" ]
     then
         gnome-terminal -- bash -c "sh Script_Controller.sh; exec bash"
 	sleep 10
@@ -202,13 +209,13 @@ while true ; do
         clear
 
     #REALIZAR CONFIGURACIÓN
-    elif [ $opt -eq "4" ]
+    elif [ $opt -eq "5" ]
     then
         _Config
         clear
 
     #SALIR
-    elif [ $opt -eq "5" ]
+    elif [ $opt -eq "6" ]
     then
         sh Script_OFF.sh
         for xid in $(wmctrl -l | grep -e "Terminal" | awk '{print $1}'); do wmctrl -i -c $xid ; done
