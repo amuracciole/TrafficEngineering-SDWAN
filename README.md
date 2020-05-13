@@ -46,7 +46,7 @@ Desde el ***punto 4*** es posible seleccionar:
 
 ### 1 - Crear escenario
 
-Levanta el escenario Lab_TFM.xml. Conjuntamente con este se ejecuta un [script]() que limita el ancho de banda de los canales a 100 Mbps.
+Levanta el escenario Lab_TFM.xml. Conjuntamente con este se ejecuta un [script](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/TFM/Script_wondershaper.sh) que limita el ancho de banda de los canales a 100 Mbps.
 
 Para ello es necesario de antemano tener instalado el **wondershaper** mediante los siguientes comandos:
 ```
