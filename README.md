@@ -71,11 +71,11 @@ Desde aquí se puede agregar reglas para en las tablas de flujos así como tambi
 
 Se puede ver tanto desde información de los conmutadores en general, como la tablas de flujo, grupos y puertos de los mismos. A su vez es posible consultar la versión de OpenVSwitch o mism oimprimir el diagrama de red del escenario
 
-***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW. Estos parámetros se obtienen del controlador [modificado](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/simple_monitor_13_modify2.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
+***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW. Estos parámetros se obtienen del [controlador](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/ryu/app/network_awareness2/shortest_forwarding.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
 
 ## Pendientes:
 
-1. Realizar la función para medir el tiempo real el ancho de banda disponible en los canales y así determinar el mejor camino. Tener en cuenta el número de puerto así como también si el tráfico es TCp o UDP.
+1. Realizar la función para medir el tiempo real el ancho de banda disponible en los canales y así determinar el mejor camino. Tener en cuenta el número de puerto así como también si el tráfico es TCP o UDP.
 
 2. En caso de que haya tiempo ver si se puede agregar una interfaz gráfica para ver en colores por donde se envía el tráfico
 
