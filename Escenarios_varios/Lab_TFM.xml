@@ -55,10 +55,8 @@ SPAIN
     <if id="1" net="Net1">
       <mac>00:00:00:00:01:01</mac>
       <ipv4>10.1.1.2/24</ipv4>
-      <ipv6>2001:db8:0:1:200:ff:fe00:101/64</ipv6>
     </if>
     <route type="ipv4" gw="10.1.1.1">default</route>
-    <route type="ipv6" gw="2001:db8:0:1:200:ff:fe00:601">default</route>
   </vm>
   
   <vm name="h02" type="lxc" arch="x86_64">
@@ -67,10 +65,8 @@ SPAIN
     <if id="1" net="Net1">
       <mac>00:00:00:00:02:01</mac>
       <ipv4>10.1.1.3/24</ipv4>
-      <ipv6>2001:db8:0:1:200:ff:fe00:201/64</ipv6>
     </if>
     <route type="ipv4" gw="10.1.1.1">default</route>
-    <route type="ipv6" gw="2001:db8:0:1:200:ff:fe00:601">default</route> 
   </vm>
   
   <vm name="h03" type="lxc" arch="x86_64">
@@ -78,10 +74,8 @@ SPAIN
     <if id="1" net="Net4" >
       <mac>00:00:00:00:03:01</mac>
       <ipv4>10.1.5.2/24</ipv4>
-      <ipv6>2001:db8:0:5:200:ff:fe00:301/64</ipv6>
     </if>
     <route type="ipv4" gw="10.1.5.1">default</route>
-    <route type="ipv6" gw="2001:db8:0:5:200:ff:fe00:701">default</route>
   </vm>
   
   <vm name="h04" type="lxc" arch="x86_64">
@@ -89,58 +83,48 @@ SPAIN
     <if id="1" net="Net4">
       <mac>00:00:00:00:04:01</mac>
       <ipv4>10.1.5.3/24</ipv4>
-      <ipv6>2001:db8:0:5:200:ff:fe00:401/64</ipv6>
     </if>
     <route type="ipv4" gw="10.1.5.1">default</route>
-    <route type="ipv6" gw="2001:db8:0:5:200:ff:fe00:701">default</route>
   </vm>
  
   <vm name="R1_edge" type="lxc" arch="x86_64">
     <filesystem type="cow">/usr/share/vnx/filesystems/rootfs_lxc_vyos</filesystem>
-    <!--<filetree seq="on_boot" root="/root/" perms="755">conf/set-hostname</filetree>-->
-    <!--fietree lo que hace es copiar conf/set-hostnames en /root/ y exec ejecutarlo -->
-    <!--<exec seq="on_boot" type="verbatim" ostype="system">/usr/share/vnx/tfm/conf/set-hostname</exec>-->
+    <filetree seq="on_boot" root="/root/" perms="777">/usr/share/vnx/tfm/conf/shaper </filetree>
+    <!--<filetree seq="on_boot" root="/root/" perms="777">/usr/share/vnx/tfm/conf/wondershaper </filetree>-->
+    <!--<exec seq="on_boot" type="verbatim" ostype="system">/root/shaper/start_shaperf.sh metrics-750.txt </exec>-->
     <if id="1" net="Net1">
       <mac>00:00:00:00:06:01</mac>
       <ipv4>10.1.1.1/24</ipv4>
-      <ipv6>2001:db8:0:1:200:ff:fe00:601/64</ipv6>
     </if>
     <if id="2" net="Net2">
       <mac>00:00:00:00:06:02</mac>
       <ipv4>10.1.2.1/24</ipv4>
-      <ipv6>2001:db8:0:2:200:ff:fe00:602/64</ipv6>
     </if>
     <if id="3" net="CONM_A">
       <mac>00:00:00:00:06:03</mac>
       <ipv4>10.1.4.1/24</ipv4>
-      <ipv6>2001:db8:0:4:200:ff:fe00:603/64</ipv6>
     </if>
     <route type="ipv4" gw="10.1.4.2">default</route>
-    <route type="ipv6" gw="2001:db8:0:4:200:ff:fe00:703">default</route>
     <forwarding type="ip" />
   </vm>
 
   <vm name="R2_edge" type="lxc" arch="x86_64">
     <filesystem type="cow">/usr/share/vnx/filesystems/rootfs_lxc_vyos</filesystem>
-     <!--<filetree seq="set-hostname2" root="/root/" perms="755">conf/set-hostname2</filetree>
-    <exec seq="set-hostname2" type="verbatim" ostype="system">/root/set-hostname2</exec>-->
+    <!--<filetree seq="on_boot" root="/root/" perms="777">/usr/share/vnx/tfm/conf/shaper </filetree>-->
+    <!--<exec seq="on_boot" type="verbatim" ostype="system">/root/shaper/start_shaperf.sh metrics-750.txt </exec>-->
     <if id="1" net="Net4">
       <mac>00:00:00:00:07:01</mac>
       <ipv4>10.1.5.1/24</ipv4>
-      <ipv6>2001:db8:0:5:200:ff:fe00:701/64</ipv6>
     </if>
     <if id="2" net="Net3">
       <mac>00:00:00:00:07:02</mac>
       <ipv4>10.1.3.1/24</ipv4>
-      <ipv6>2001:db8:0:3:200:ff:fe00:702/64</ipv6>
     </if>
     <if id="3" net="CONM_E">
       <mac>00:00:00:00:07:03</mac>
       <ipv4>10.1.4.2/24</ipv4>
-      <ipv6>2001:db8:0:4:200:ff:fe00:703/64</ipv6>
     </if>
     <route type="ipv4" gw="10.1.4.1">default</route>
-    <route type="ipv6" gw="2001:db8:0:4:200:ff:fe00:603">default</route>
     <forwarding type="ip" />
   </vm>
   
@@ -149,12 +133,10 @@ SPAIN
     <if id="1" net="Net2" >
       <mac>00:00:00:00:05:01</mac>
       <ipv4>10.1.2.2/24</ipv4>
-      <ipv6>2001:db8:0:2:200:ff:fe00:501/64</ipv6>
     </if>
     <if id="2" net="Net3" >
       <mac>00:00:00:00:05:02</mac>
       <ipv4>10.1.3.2/24</ipv4>
-      <ipv6>2001:db8:0:3:200:ff:fe00:502/64</ipv6>
     </if>
     <exec seq="on_boot" type="verbatim">
         sudo sysctl net.ipv4.ip_forward=1

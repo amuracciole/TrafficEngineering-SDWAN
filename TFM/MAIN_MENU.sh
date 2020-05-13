@@ -504,6 +504,7 @@ while true ; do
     then
         cd /home/upm/Desktop/TFM
         sh Script_ON.sh
+        sh Script_wondershaper.sh
         clear
 
     #DESTRUIR ESCENARIO
