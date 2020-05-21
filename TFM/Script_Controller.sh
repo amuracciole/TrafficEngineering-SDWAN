@@ -9,6 +9,10 @@ cd /home/upm/ryu/ryu/app
 ##FUNCIONA
 ryu-manager ryu.app.gui_topology.gui_topology ./network_awareness2/shortest_forwarding.py --observe-links --k-paths=2  --weight=bw
 
+#ryu-manager ryu.app.gui_topology.gui_topology ./flowmanager-master/flowmanager.py ./network_awareness2/shortest_forwarding.py --observe-links --k-paths=2  --weight=bw
+
+
+
 ## Simlpe monitor con qos (minpro) con rest
 ##FUNCIONA##
 #ryu-manager simple_monitor_13_modify2.py ryu.app.gui_topology.gui_topology

@@ -504,6 +504,7 @@ while true ; do
     then
         cd /home/upm/Desktop/TFM
         sh Script_ON.sh
+        sh Script_clean_wondershaper.sh
         sh Script_wondershaper.sh
         clear
 
@@ -540,6 +541,7 @@ while true ; do
     #SALIR
     elif [ $opt -eq "6" ]
     then
+        sh Script_clean_wondershaper.sh
         sh Script_OFF.sh
         for xid in $(wmctrl -l | grep -e "Terminal" | awk '{print $1}'); do wmctrl -i -c $xid ; done
         for xid in $(wmctrl -l | grep -e "Escenario_TFM_Andres_Muracciole.svg" | awk '{print $1}'); do wmctrl -i -c $xid ; done
