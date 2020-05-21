@@ -1,27 +1,19 @@
+import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from matplotlib import style
+import time
 
-style.use('fivethirtyeight')
-
-fig = plt.figure()
-ax1 = fig.add_subplot(111)
-
-def animate(i):
-    graph_data = open('/home/upm/Desktop/TFM/Data_short.txt','r').read()
-    lines = graph_data.split('\n')
-    xs = []
-    ys = []
-    for line in lines:
-        if len(line) > 1:
-            x, y = line.split(',')
-            xs.append(x)
-            ys.append(y)
+x = []
+y = []
+file = open("/home/upm/Desktop/TFM/Data_short.txt", "r")
+for line in file:
+    data = line.split(',')
+    x.append(float(data[0]))
+    y.append(float(data[1]))
     
-       
-    ax1.clear()
-    ax1.plot(xs, ys)
+# Creating a numpy array
+X = np.array(x)
+Y = np.array(y)
 
-
-ani = animation.FuncAnimation(fig, animate, interval=5)
+plt.figure(1)
+plt.plot(X,Y)
 plt.show()

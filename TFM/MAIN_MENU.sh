@@ -93,8 +93,10 @@ _ShowConfigurations() {
 2) Tablas de flujo (flows tables)
 3) Grupos (groups tables)
 4) Puertos (ports tables)
-5) Diagrama de red
-6) Version OpenVSwitch
+5) Gráfico BW short_path
+6) Gráfico BW long_path
+7) Diagrama de red
+8) Version OpenVSwitch
 
 **Ingrese otra tecla para volver al menu principal**"
 }
@@ -475,15 +477,29 @@ _Shows() {
             sh Script_dump_ports.sh CONM_E
         fi
     
-    #VISUALIZAR DIAGRAMA DE RED
+    #VISUALIZAR GRAFICA SHORT_PATH
     elif [ $opt_show -eq "5" ]
+    then
+        cd /home/upm/Desktop/TFM
+        python Grafica_short.py
+        clear
+
+    #VISUALIZAR GRAFICA LONG_PATH
+    elif [ $opt_show -eq "6" ]
+    then
+        cd /home/upm/Desktop/TFM
+        python Grafica_long.py
+        clear
+
+    #VISUALIZAR DIAGRAMA DE RED
+    elif [ $opt_show -eq "7" ]
     then
         cd /home/upm/Desktop/TFM
         sh Script_Diagrama.sh
         clear
 
     #VISUALIZAR VERSION DE OPENVSWITCH
-    elif [ $opt_show -eq "6" ]
+    elif [ $opt_show -eq "8" ]
     then
         echo
         sudo ovs-vswitchd --version
@@ -524,6 +540,7 @@ while true ; do
 	#sh Deny_IPv6.sh
 	sh All_ARP_short_path.sh
 	sh All_IP_short_path.sh
+        gnome-terminal -- bash -c "python Monitoreo.py"
         clear
 
     #REALIZAR CONFIGURACIÓN

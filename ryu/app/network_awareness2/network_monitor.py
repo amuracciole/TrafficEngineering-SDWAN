@@ -405,7 +405,7 @@ class NetworkMonitor(app_manager.RyuApp):
                   '-----------  -----------')
             format = '%016x %8x %16.1f %17.1f %21d %16s %14s'
             file = open("/home/upm/Desktop/TFM/Tabla.csv", "w")
-            file.write("index,datapath,port,port-freebw")
+            file.write("index,datapath,port,port-speed")
             file.write("\n")
             for dpid in bodys.keys():
                 for stat in sorted(bodys[dpid], key=attrgetter('port_no')):
@@ -418,6 +418,6 @@ class NetworkMonitor(app_manager.RyuApp):
                             setting.MAX_CAPACITY,
                             self.port_features[dpid][stat.port_no][0],
                             self.port_features[dpid][stat.port_no][1]))
-                        file.write("0" + ",%x" %dpid + ",%x" %stat.port_no + ",%f" %self.free_bandwidth[dpid][stat.port_no])
+                        file.write("0" + ",%x" %dpid + ",%x" %stat.port_no + ",%f" %(setting.MAX_CAPACITY - self.free_bandwidth[dpid][stat.port_no]))
                         file.write("\n")
             print '\n'
