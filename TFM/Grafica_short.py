@@ -15,5 +15,8 @@ X = np.array(x)
 Y = np.array(y)
 
 plt.figure(1)
+plt.title("Bandwidth short-path")
+plt.xlabel("Tiempo (Seg.)")
+plt.ylabel("Bandwidth (Kbps)")
 plt.plot(X,Y)
 plt.show()

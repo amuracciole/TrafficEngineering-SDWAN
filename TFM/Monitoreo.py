@@ -45,7 +45,7 @@ while (True):
     file.write(str(i) + "," + str("{:.2f}".format(bw_short_path_prom)))
     file.write("\n")
 
-    i = i + 1
+    i = i + 10
     
     print ("LONG_PATH (CONM_A - CONM_B - CONM_D - CONM_E):")
     print ("    Bandwidth: " + str("{:.2f}".format(bw_long_path_prom)) + " Kbps")
