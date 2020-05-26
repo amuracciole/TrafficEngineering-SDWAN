@@ -404,7 +404,7 @@ class NetworkMonitor(app_manager.RyuApp):
                   '-----------------  -------------------   --------------------   '
                   '-----------  -----------')
             format = '%016x %8x %16.1f %17.1f %21d %16s %14s'
-            file = open("/home/upm/Desktop/TFM/Tabla.csv", "w")
+            file = open("/home/upm/Desktop/TFM/Table.csv", "w")
             file.write("index,datapath,port,port-speed")
             file.write("\n")
             for dpid in bodys.keys():

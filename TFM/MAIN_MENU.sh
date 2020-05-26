@@ -316,7 +316,7 @@ _Config() {
         read opt_select_conm_del
         if [ $opt_select_conm_del -eq "1" ]
         then
-            sh Script_dump_flows.sh CONM_A
+            sh Dump_flows.sh CONM_A
             #_SelectPriority
             #read prio
             _ConfigureSrcIP
@@ -327,10 +327,10 @@ _Config() {
             read in_port
             _SelectActionA
             read action
-            sh Dell_some_IP_flow_A.sh $selec_src_IP $select_dst_IP $in_port $action
+            sh Delete_some_IP_flow_A.sh $selec_src_IP $select_dst_IP $in_port $action
         elif [ $opt_select_conm_del -eq "2" ]
         then
-            sh Script_dump_flows.sh CONM_B
+            sh Dump_flows.sh CONM_B
             #_SelectPriority
             #read prio
             _ConfigureSrcIP
@@ -341,10 +341,10 @@ _Config() {
             read in_port
             _SelectActionB
             read action
-            sh Dell_some_IP_flow_B.sh $selec_src_IP $select_dst_IP $in_port $action
+            sh Delete_some_IP_flow_B.sh $selec_src_IP $select_dst_IP $in_port $action
         elif [ $opt_select_conm_del -eq "3" ]
         then
-            sh Script_dump_flows.sh CONM_C
+            sh Dump_flows.sh CONM_C
             #_SelectPriority
             #read prio
             _ConfigureSrcIP
@@ -355,10 +355,10 @@ _Config() {
             read in_port
             _SelectActionC
             read action
-            sh Dell_some_IP_flow_C.sh $selec_src_IP $select_dst_IP $in_port $action
+            sh Delete_some_IP_flow_C.sh $selec_src_IP $select_dst_IP $in_port $action
         elif [ $opt_select_conm_del -eq "4" ]
         then
-            sh Script_dump_flows.sh CONM_D
+            sh Dump_flows.sh CONM_D
             #_SelectPriority
             #read prio
             _ConfigureSrcIP
@@ -369,10 +369,10 @@ _Config() {
             read in_port
             _SelectActionD
             read action
-            sh Dell_some_IP_flow_D.sh $selec_src_IP $select_dst_IP $in_port $action
+            sh Delte_some_IP_flow_D.sh $selec_src_IP $select_dst_IP $in_port $action
         elif [ $opt_select_conm_del -eq "5" ]
         then
-            sh Script_dump_flows.sh CONM_E
+            sh Dump_flows.sh CONM_E
             #_SelectPriority
             #read prio
             _ConfigureSrcIP
@@ -383,7 +383,7 @@ _Config() {
             read in_port
             _SelectActionE
             read action
-            sh Dell_some_IP_flow_E.sh $selec_src_IP $select_dst_IP $in_port $action
+            sh Delete_some_IP_flow_E.sh $selec_src_IP $select_dst_IP $in_port $action
         fi
         
     fi
@@ -412,19 +412,19 @@ _Shows() {
         read opt_select_conm
         if [ $opt_select_conm -eq "1" ]
         then
-            sh Script_dump_flows.sh CONM_A
+            sh Dump_flows.sh CONM_A
         elif [ $opt_select_conm -eq "2" ]
         then
-            sh Script_dump_flows.sh CONM_B
+            sh Dump_flows.sh CONM_B
         elif [ $opt_select_conm -eq "3" ]
         then
-            sh Script_dump_flows.sh CONM_C
+            sh Dump_flows.sh CONM_C
         elif [ $opt_select_conm -eq "4" ]
         then
-            sh Script_dump_flows.sh CONM_D
+            sh Dump_flows.sh CONM_D
         elif [ $opt_select_conm -eq "5" ]
         then
-            sh Script_dump_flows.sh CONM_E
+            sh Dump_flows.sh CONM_E
         fi
     
     #VISUALIZAR TABLAS DE GRUPOS
@@ -437,19 +437,19 @@ _Shows() {
         read opt_select_conm
         if [ $opt_select_conm -eq "1" ]
         then
-            sh Script_dump_groups.sh CONM_A
+            sh Dump_groups.sh CONM_A
         elif [ $opt_select_conm -eq "2" ]
         then
-            sh Script_dump_groups.sh CONM_B
+            sh Dump_groups.sh CONM_B
         elif [ $opt_select_conm -eq "3" ]
         then
-            sh Script_dump_groups.sh CONM_C
+            sh Dump_groups.sh CONM_C
         elif [ $opt_select_conm -eq "4" ]
         then
-            sh Script_dump_groups.sh CONM_D
+            sh Dump_groups.sh CONM_D
         elif [ $opt_select_conm -eq "5" ]
         then
-            sh Script_dump_groups.sh CONM_E
+            sh Dump_groups.sh CONM_E
         fi
 
     #VISUALIZAR TABLAS DE PUERTOS
@@ -462,40 +462,40 @@ _Shows() {
         read opt_select_conm
         if [ $opt_select_conm -eq "1" ]
         then
-            sh Script_dump_ports.sh CONM_A
+            sh Dump_ports.sh CONM_A
         elif [ $opt_select_conm -eq "2" ]
         then
-            sh Script_dump_ports.sh CONM_B
+            sh Dump_ports.sh CONM_B
         elif [ $opt_select_conm -eq "3" ]
         then
-            sh Script_dump_ports.sh CONM_C
+            sh Dump_ports.sh CONM_C
         elif [ $opt_select_conm -eq "4" ]
         then
-            sh Script_dump_ports.sh CONM_D
+            sh Dump_ports.sh CONM_D
         elif [ $opt_select_conm -eq "5" ]
         then
-            sh Script_dump_ports.sh CONM_E
+            sh Dump_ports.sh CONM_E
         fi
     
     #VISUALIZAR GRAFICA SHORT_PATH
     elif [ $opt_show -eq "5" ]
     then
         cd /home/upm/Desktop/TFM
-        python Grafica_short.py
+        python Graph_short.py
         clear
 
     #VISUALIZAR GRAFICA LONG_PATH
     elif [ $opt_show -eq "6" ]
     then
         cd /home/upm/Desktop/TFM
-        python Grafica_long.py
+        python Graph_long.py
         clear
 
     #VISUALIZAR DIAGRAMA DE RED
     elif [ $opt_show -eq "7" ]
     then
         cd /home/upm/Desktop/TFM
-        sh Script_Diagrama.sh
+        sh Diagrama.sh
         clear
 
     #VISUALIZAR VERSION DE OPENVSWITCH
@@ -519,28 +519,28 @@ while true ; do
     if [ $opt -eq "1" ]
     then
         cd /home/upm/Desktop/TFM
-        sh Script_ON.sh
-        sh Script_clean_wondershaper.sh
-        sh Script_wondershaper.sh
+        sh ON.sh
+        sh Clean_wondershaper.sh
+        sh Wondershaper.sh
         clear
 
     #DESTRUIR ESCENARIO
     elif [ $opt -eq "2" ]
     then
         cd /home/upm/Desktop/TFM
-        sh Script_OFF.sh
+        sh OFF.sh
         for xid in $(wmctrl -l | grep -e "Escenario_TFM_Andres_Muracciole.svg" | awk '{print $1}'); do wmctrl -i -c $xid ; done
         clear
     
     #EJECUTAR CONTROLADOR
     elif [ $opt -eq "3" ]
     then
-        gnome-terminal -- bash -c "sh Script_Controller.sh; exec bash"
+        gnome-terminal -- bash -c "sh Controller.sh; exec bash"
         sleep 10
 	#sh Deny_IPv6.sh
 	sh All_ARP_short_path.sh
 	sh All_IP_short_path.sh
-        gnome-terminal -- bash -c "python Monitoreo.py"
+        gnome-terminal -- bash -c "python Monitor.py"
         clear
 
     #REALIZAR CONFIGURACIÓN
@@ -558,8 +558,8 @@ while true ; do
     #SALIR
     elif [ $opt -eq "6" ]
     then
-        sh Script_clean_wondershaper.sh
-        sh Script_OFF.sh
+        sh Clean_wondershaper.sh
+        sh OFF.sh
         for xid in $(wmctrl -l | grep -e "Terminal" | awk '{print $1}'); do wmctrl -i -c $xid ; done
         for xid in $(wmctrl -l | grep -e "Escenario_TFM_Andres_Muracciole.svg" | awk '{print $1}'); do wmctrl -i -c $xid ; done
         clear

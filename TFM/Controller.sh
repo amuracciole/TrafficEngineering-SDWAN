@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "\n---> Levantar controlador <---"
 cd /home/upm/ryu/ryu/app
 
 ##FUNCIONA - Multipath (sin meidores de BW, PL y DL - Con rest## 
@@ -10,8 +9,6 @@ cd /home/upm/ryu/ryu/app
 ryu-manager ryu.app.gui_topology.gui_topology ./network_awareness2/shortest_forwarding.py --observe-links --k-paths=2  --weight=bw
 
 #ryu-manager ryu.app.gui_topology.gui_topology ./flowmanager-master/flowmanager.py ./network_awareness2/shortest_forwarding.py --observe-links --k-paths=2  --weight=bw
-
-
 
 ## Simlpe monitor con qos (minpro) con rest
 ##FUNCIONA##

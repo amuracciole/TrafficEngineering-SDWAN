@@ -11,6 +11,7 @@ bw_short_path_1 = 0
 bw_short_path_2 = 0
 bw_short_path_3 = 0
 i=0
+bw_lim = 100000
 
 remove("/home/upm/Desktop/TFM/Data_long.txt")
 file = open("/home/upm/Desktop/TFM/Data_long.txt", "a")
@@ -23,7 +24,7 @@ while (True):
     bw_long_path_2 = bw_long_path_1
     bw_short_path_3 = bw_short_path_2
     bw_short_path_2 = bw_short_path_1
-    with open('/home/upm/Desktop/TFM/Tabla.csv', 'r') as file:
+    with open('/home/upm/Desktop/TFM/Table.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             #print(row)
@@ -38,11 +39,11 @@ while (True):
     bw_short_path_prom = (bw_short_path_3 + bw_short_path_2 + bw_short_path_1)/3
 
     file = open("/home/upm/Desktop/TFM/Data_long.txt", "a")
-    file.write(str(i) + "," + str("{:.2f}".format(bw_long_path_prom)))
+    file.write(str(i) + "," + str("{:.2f}".format(bw_long_path_prom)) + "," + str(bw_lim))
     file.write("\n")
 
     file = open("/home/upm/Desktop/TFM/Data_short.txt", "a")
-    file.write(str(i) + "," + str("{:.2f}".format(bw_short_path_prom)))
+    file.write(str(i) + "," + str("{:.2f}".format(bw_short_path_prom)) + "," + str(bw_lim))
     file.write("\n")
 
     i = i + 10
