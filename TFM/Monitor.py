@@ -54,24 +54,28 @@ while (True):
     
     print ("LONG_PATH (CONM_A - CONM_B - CONM_D - CONM_E):")
     print ("    Bandwidth: " + str("{:.2f}".format(bw_long_path_prom)) + " Kbps")
-    print ("    % del total libre: " + str("{:.2f}".format(100 - bw_long_path_prom/1000)) + "%")
+    print ("    % del total libre: " + str("{:.4f}".format(100 - bw_long_path_prom/1000)) + "%")
     print()
 
     print ("SHORT_PATH (CONM_A - CONM_C - CONM_E):")
     print ("    Bandwidth: " + str("{:.2f}".format(bw_short_path_prom)) + " Kbps")
-    print ("    % del total libre: " + str("{:.2f}".format(100 - bw_short_path_prom/1000)) + "%")
+    print ("    % del total libre: " + str("{:.4f}".format(100 - bw_short_path_prom/1000)) + "%")
     print ()
 
     if (bw_short_path_prom > bw_lim):
-        print ("Menos del 30 libre")
+        #print ("Menos del 30 libre")
         if (secure_delete == 1):
-            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_long_path.sh 22", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_short_path.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/All_ARP_long_path.sh", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/All_IP_long_path.sh", shell=True)
             secure_delete = 0
             secure = 0
     else:
-        print ("Mas del 30 libre")
+        #print ("Mas del 30 libre")
         if (secure == 0):
-            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_long_path_delete.sh 22", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_short_path_delete.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/All_ARP_short_path.sh", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/All_IP_short_path.sh", shell=True)
             secure_delete = 1
             secure = 1
 

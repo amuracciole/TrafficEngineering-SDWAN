@@ -21,7 +21,7 @@ W = np.array(w)
 Z = np.array(z)
 
 plt.figure(1)
-plt.title("Bandwidth long-path")
+plt.title("Bandwidth short-path")
 plt.xlabel("Time (Seg.)")
 plt.ylabel("Bandwidth (Kbps)")
 plt.plot(X,Y, color="blue")
