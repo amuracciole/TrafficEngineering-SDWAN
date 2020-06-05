@@ -61,7 +61,9 @@ Elimina el escenario creado en el ***punto 1***
 
 ### 3 - Ejecutar controlador
 
-En este punto se levanta el controladore RYU y se pone por defecto una regla que todo el tráfico IP y ARP se encamine por el camino mas corto (CONM_A - CONM_C - CONM_E)
+En este punto se levanta el controladore RYU y se pone por defecto una regla que todo el tráfico IP y ARP se encamine por el camino mas corto (CONM_A - CONM_C - CONM_E).
+
+Paralelamente se ejecuta una instancia de **Monitor.py** que mide el promedio de los últimos 30 segundos del ancho de banda utilizado y si este supera el 65% realiza configuraciones en eo controlador para el tratamiento del tráfico sensible. Este proceso es automático en función de las prestaciones actuales de la red.
 
 ### 4 - Realizar configuración
 
@@ -69,15 +71,10 @@ Desde aquí se puede agregar reglas para en las tablas de flujos así como tambi
 
 ### 5 - Visualizar configuración
 
-Se puede ver tanto desde información de los conmutadores en general, como la tablas de flujo, grupos y puertos de los mismos. A su vez es posible consultar la versión de OpenVSwitch o mism oimprimir el diagrama de red del escenario
+Se puede ver tanto desde información de los conmutadores en general, como la tablas de flujo, grupos y puertos de los mismos. A su vez es posible consultar la versión de OpenVSwitch o mismo imprimir el diagrama de red del escenario.
 
-***Me encuentro trabajando para poder optimizar la selección del camnimo en función del BW. Estos parámetros se obtienen del [controlador](https://github.com/amuracciole/TrafficEngineering_SDWAN/blob/master/ryu/app/network_awareness2/shortest_forwarding.py). Para ello es necesario obtener dicha informació y tomar la desición en tiempo real***
+También es posible la visualización del tráfico mediante gráficas en ambos caminos del escenario.
 
-## Pendientes:
-
-1. Realizar la función para medir el tiempo real el ancho de banda disponible en los canales y así determinar el mejor camino. Tener en cuenta el número de puerto así como también si el tráfico es TCP o UDP.
-
-2. En caso de que haya tiempo ver si se puede agregar una interfaz gráfica para ver en colores por donde se envía el tráfico
 
 ## Fuentes de referencias:
 
