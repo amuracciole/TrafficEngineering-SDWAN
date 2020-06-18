@@ -76,12 +76,12 @@ _ConfigureSrcIP() {
 -----------------------------
         CONFIGURACIÓN                  
 -----------------------------
-Ingrese IP de Origen:"
+Ingrese IP de Origen (sw_src):"
 }
 
 _ConfigureDstIP() {
     echo "
-Ingrese IP de Destino:"
+Ingrese IP de Destino (nw_dst):"
 }
 
 _ShowConfigurations() {
@@ -91,12 +91,11 @@ _ShowConfigurations() {
 -----------------------------
 1) Conmutadores (vsctl show)          
 2) Tablas de flujo (flows tables)
-3) Grupos (groups tables)
-4) Puertos (ports tables)
-5) Gráfico BW short_path
-6) Gráfico BW long_path
-7) Diagrama de red
-8) Version OpenVSwitch
+3) Puertos (ports tables)
+4) Gráfico BW short_path
+5) Gráfico BW long_path
+6) Diagrama de red
+7) Version OpenvSwitch
 
 **Ingrese otra tecla para volver al menu principal**"
 }
@@ -128,7 +127,7 @@ Seleccione el conmutador:
 4) CONM_D
 5) CONM_E
 
-ACLARACIÓN: Solo será posible eliminar las rutas específicas creadas manualmente (las de prio=10)
+ACLARACIÓN: Solo será posible eliminar las rutas específicas creadas manualmente (priority=10)
 
 **Ingrese otra tecla para volver al menu principal**"
 }
@@ -426,34 +425,9 @@ _Shows() {
         then
             sh Dump_flows.sh CONM_E
         fi
-    
-    #VISUALIZAR TABLAS DE GRUPOS
-    elif [ $opt_show -eq "3" ]
-    then
-        clear
-        _Banner
-        _InitMessage
-        _SelectConm
-        read opt_select_conm
-        if [ $opt_select_conm -eq "1" ]
-        then
-            sh Dump_groups.sh CONM_A
-        elif [ $opt_select_conm -eq "2" ]
-        then
-            sh Dump_groups.sh CONM_B
-        elif [ $opt_select_conm -eq "3" ]
-        then
-            sh Dump_groups.sh CONM_C
-        elif [ $opt_select_conm -eq "4" ]
-        then
-            sh Dump_groups.sh CONM_D
-        elif [ $opt_select_conm -eq "5" ]
-        then
-            sh Dump_groups.sh CONM_E
-        fi
 
     #VISUALIZAR TABLAS DE PUERTOS
-    elif [ $opt_show -eq "4" ]
+    elif [ $opt_show -eq "3" ]
     then
         clear
         _Banner
@@ -478,28 +452,28 @@ _Shows() {
         fi
     
     #VISUALIZAR GRAFICA SHORT_PATH
-    elif [ $opt_show -eq "5" ]
+    elif [ $opt_show -eq "4" ]
     then
         cd /home/upm/Desktop/TFM
         python Graph_short.py
         clear
 
     #VISUALIZAR GRAFICA LONG_PATH
-    elif [ $opt_show -eq "6" ]
+    elif [ $opt_show -eq "5" ]
     then
         cd /home/upm/Desktop/TFM
         python Graph_long.py
         clear
 
     #VISUALIZAR DIAGRAMA DE RED
-    elif [ $opt_show -eq "7" ]
+    elif [ $opt_show -eq "6" ]
     then
         cd /home/upm/Desktop/TFM
         sh Diagrama.sh
         clear
 
     #VISUALIZAR VERSION DE OPENVSWITCH
-    elif [ $opt_show -eq "8" ]
+    elif [ $opt_show -eq "7" ]
     then
         echo
         sudo ovs-vswitchd --version
