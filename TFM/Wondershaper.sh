@@ -26,9 +26,9 @@ sudo wondershaper -a A-B-1 -u 102400 -d 102400
 # Se aplica una política que en la interfaz B-D-1 haya 100 Mbps.
 #sudo wondershaper -a B-D-1 -u 102400 -d 102400
 # Se aplica una política que en la interfaz D-E-1 haya 100 Mbps.
-#sudo wondershaper -a D-E-1 -u 102400 -d 102400
+sudo wondershaper -a D-E-1 -u 102400 -d 102400
 # Se aplica una política que en la interfaz C-E-0 haya 100 Mbps.
-#sudo wondershaper -a E-C-0 -u 102400 -d 102400
+sudo wondershaper -a E-C-0 -u 102400 -d 102400
 # Se aplica una política que en la interfaz D-E-0 haya 100 Mbps.
 #sudo wondershaper -a D-E-0 -u 102400 -d 102400
 

@@ -14,8 +14,8 @@ sudo wondershaper -c -a A-C-0
 #sudo wondershaper -c -a B-D-0
 #sudo wondershaper -c -a B-D-1
 #sudo wondershaper -c -a D-E-0
-#sudo wondershaper -c -a D-E-1
-#sudo wondershaper -c -a E-C-0
+sudo wondershaper -c -a D-E-1
+sudo wondershaper -c -a E-C-0
 #sudo wondershaper -c -a E-C-1
 #sudo wondershaper -c -a Net1
 #sudo wondershaper -c -a Net2

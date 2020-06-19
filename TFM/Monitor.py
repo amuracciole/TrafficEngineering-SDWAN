@@ -62,11 +62,14 @@ while (True):
     print ("    % libre (Prom. ultimos 30 seg.): " + str("{:.4f}".format(100 - bw_short_path_prom/1000)) + "%")
     print ()
 
-#Protocolos sensibles: SSH, FTP, TFTP, voip, 
     if (bw_short_path_prom > bw_lim):
         #print ("Menos del 35 libre")
         if (secure_delete == 1):
-            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_short_path.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_tcp_short_path.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_tcp_short_path.sh 35001", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_udp_short_path.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_udp_short_path.sh 35001", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_udp_short_path.sh 35002", shell=True)
             subprocess.call("/home/upm/Desktop/TFM/All_ARP_long_path.sh", shell=True)
             subprocess.call("/home/upm/Desktop/TFM/All_IP_long_path.sh", shell=True)
             secure_delete = 0
@@ -74,7 +77,11 @@ while (True):
     else:
         #print ("Mas del 35 libre")
         if (secure == 0):
-            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_short_path_delete.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_tcp_short_path_delete.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_tcp_short_path_delete.sh 35001", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_udp_short_path_delete.sh 35000", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_udp_short_path_delete.sh 35001", shell=True)
+            subprocess.call("/home/upm/Desktop/TFM/Sensible_traffic_udp_short_path_delete.sh 35002", shell=True)
             subprocess.call("/home/upm/Desktop/TFM/All_ARP_short_path.sh", shell=True)
             subprocess.call("/home/upm/Desktop/TFM/All_IP_short_path.sh", shell=True)
             secure_delete = 1
