@@ -1,4 +1,4 @@
-#Eliminar flujo IP en CONM_B
+#Eliminar flujo IPv4 en CONM_B
 curl -X POST -d '{
     "dpid": 2560,
     "cookie": 0,
