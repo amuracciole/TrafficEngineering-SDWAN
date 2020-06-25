@@ -1,0 +1,4 @@
+CHANGES
+=======
+
+* drop Python 3.4 CI test
