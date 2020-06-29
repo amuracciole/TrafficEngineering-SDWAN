@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=true
-Name=TE_SD-WAN
-Icon=/home/upm/Desktop/TFM/Icon.png
-Exec=/home/upm/Desktop/TFM/MAIN_MENU.sh
-GenericName[es_ES]=Ejecutar solucion TE
-StartupNotify=false
