@@ -63,3 +63,9 @@ Permite agregar reglas en las tablas de flujos así como también eliminar aquel
 ### 5 - Visualizar configuración
 
 Visualización de la información de los conmutadores, tablas de flujo, diagrama de red o tráfico por los enlaces (gráficos).
+
+### 6 - Salir
+
+Se cierra el escenario, controlador, monitor y diagrama de red.
+
+**NOTA: Guardar la carpeta network_awareness2 en el path .../ryu/ryu/app/**
