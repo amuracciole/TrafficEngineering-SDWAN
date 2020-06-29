@@ -63,10 +63,3 @@ Permite agregar reglas en las tablas de flujos así como también eliminar aquel
 ### 5 - Visualizar configuración
 
 Visualización de la información de los conmutadores, tablas de flujo, diagrama de red o tráfico por los enlaces (gráficos).
-
-
-## Fuentes de referencias:
-
-- [Repositorio Wildan Maulana Syahidillah](https://github.com/wildan2711)
-
-- [Repositorio muzixing](https://github.com/muzixing/ryu)
