@@ -4,7 +4,7 @@ Este repositorio forma parte del trabajo de TFM de **Andrés Muracciole** para e
 
 Mención especial para _Carlos M. Lentisco Sánchez_ quien tutorizó el trabajo desde un principio.
 
-**OBJETIVO**
+**OBJETIVO:**
 Estudio e implementación de una solución de ingeniería de tráfico y controlador SD-WAN para tratamiento de datos en una red WAN en tiempo real. El objetivo es sensar los caminos hasta el destino y determinar el camino mas óptimo para el tráfico sensible, en función del ancho de banda disponible en los canales.
 
 El controlador a utilizar será Ryu y se hará un fuerte uso de su [API](https://ryu.readthedocs.io/en/latest/app/ofctl_rest.html#).
